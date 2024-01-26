@@ -6,7 +6,6 @@ script that reads stdin line by line and computes metrics
 
 
 import sys
-import signal
 
 
 total_file_size = 0
@@ -17,9 +16,9 @@ def print_stat(total_file_size, status_code_count):
     """
     print statistics
     """
-    print("File size: {}".format(total_file_size))
+    print("File size: {:d}".format(total_file_size))
     for status_code in sorted(status_code_count.keys()):
-        print("{}: {}".format(
+        print("{:s}: {:d}".format(
             status_code, status_code_count[status_code]))
 
 
@@ -39,6 +38,7 @@ try:
 
         except (IndexError, ValueError):
             pass
+    print_stat(total_file_size, status_code_count)
 except KeyboardInterrupt:
     print_stat(total_file_size, status_code_count)
     raise
