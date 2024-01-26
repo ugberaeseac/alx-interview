@@ -18,7 +18,7 @@ def print_stat(total_file_size, status_code_count):
     """
     print("File size: {:d}".format(total_file_size))
     for status_code in sorted(status_code_count.keys()):
-        print("{:s}: {:d}".format(
+        print("{:d}: {:d}".format(
             status_code, status_code_count[status_code]))
 
 
