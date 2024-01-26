@@ -33,7 +33,7 @@ try:
             status_code_count[status_code] = status_code_count.get(
                     status_code, 0) + 1
 
-            if line_num % 10 == 0:
+            if line_num != 0 and line_num % 10 == 0:
                 print_stat(total_file_size, status_code_count)
 
         except (IndexError, ValueError):
