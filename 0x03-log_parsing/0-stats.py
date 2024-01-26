@@ -13,7 +13,7 @@ total_file_size = 0
 status_code_count = {}
 
 
-def print_stat():
+def print_stat(total_file_size, status_code_count):
     """
     print statistics
     """
@@ -23,34 +23,23 @@ def print_stat():
             status_code, status_code_count[status_code]))
 
 
-def sig_handler(signal, handler):
-    """
-    Handle kyboard interruption signmal
-    """
-    print_stat()
-    sys.exit(0)
-
-
-signal.signal(signal.SIGINT, sig_handler)
-
 
 try:
     for line_num, line in enumerate(sys.stdin, start=1):
         try:
             parse_line = line.split()
-            if len(parse_line) >= 10 and parse_line[5].isdigit():
-                file_size = int(parse_line[9])
-                status_code = int(parse_line[8])
+            file_size = int(parse_line[-1])
+            status_code = int(parse_line[-2])
 
-                total_file_size = total_file_size + file_size
-                status_code_count[status_code] = status_code_count.get(
-                        status_code, 0) + 1
+            total_file_size = total_file_size + file_size
+            status_code_count[status_code] = status_code_count.get(
+                    status_code, 0) + 1
 
             if line_num % 10 == 0:
-                print_stat()
+                print_stat(total_file_size, status_code_count)
 
         except (IndexError, ValueError):
             pass
 except KeyboardInterrupt:
-    print_stat()
-    sys.exit(0)
+    print_stat(total_file_size, status_code_count)
+    raise
