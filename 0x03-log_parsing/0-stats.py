@@ -23,7 +23,6 @@ def print_stat(total_file_size, status_code_count):
             status_code, status_code_count[status_code]))
 
 
-
 try:
     for line_num, line in enumerate(sys.stdin, start=1):
         try:
