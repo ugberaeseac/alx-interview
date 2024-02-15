@@ -1,0 +1,15 @@
+{
+  "name": "starwars-characters",
+  "version": "1.0.0",
+  "description": "A script to print all characters of a Star Wars movie",
+  "main": "0-starwars_characters.js",
+  "scripts": {
+    "start": "node 0-starwars_characters.js"
+  },
+  "author": "Your Name",
+  "license": "MIT",
+  "dependencies": {
+    "request": "^2.88.2"
+  }
+}
+
