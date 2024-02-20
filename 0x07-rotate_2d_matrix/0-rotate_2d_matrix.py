@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 """
 Rotate a 2-D matrix 90 degrees clockwise(Transpose)
 Matrix must be edited in-place
