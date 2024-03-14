@@ -18,11 +18,11 @@ def isWinner(x, nums):
     benWins = 0
 
     for num in nums:
-        winner = getWinner(num)
-        if winner == "Maria":
-            mariaWins += 1
-        else:
+        primeCount = countPrimes(num)
+        if primeCount % 2 == 0:
             benWins += 1
+        else:
+            mariaWins += 1
 
     if mariaWins > benWins:
         return "Maria"
@@ -32,15 +32,15 @@ def isWinner(x, nums):
         return None
 
 
-def getWinner(number):
+def countPrimes(number):
     """
-    checks for the winner in a round
+    counts the prime number for a player
     """
-    primeCount = sum(1 for i in range(1, number + 1) if isPrimeNumber(i))
-    if primeCount % 2 == 0:
-        return "Ben"
-    else:
-        return "Maria"
+    count = 0
+    for i in range(2, number + 1):
+        if isPrimeNumber(i):
+            count += 1
+    return count
 
 
 def isPrimeNumber(number):
@@ -53,4 +53,4 @@ def isPrimeNumber(number):
     for i in range(2, int(number ** 0.5) + 1):
         if number % i == 0:
             return False
-        return True
+    return True
